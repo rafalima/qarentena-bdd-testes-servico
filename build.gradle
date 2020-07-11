@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation 'io.cucumber:cucumber-java:6.2.2'
+    testImplementation 'io.cucumber:cucumber-junit:6.2.2'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
