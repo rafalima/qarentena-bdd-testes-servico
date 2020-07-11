@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'idea'
+    id "io.freefair.lombok" version "5.1.0"
 }
 
 repositories {
@@ -8,12 +9,9 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+
     testImplementation 'io.cucumber:cucumber-java:6.2.2'
     testImplementation 'io.cucumber:cucumber-junit:6.2.2'
-}
-
-configurations {
-    cucumberRuntime {
-        extendsFrom testImplementation
-    }
+    testImplementation 'io.rest-assured:rest-assured:4.3.1'
 }
