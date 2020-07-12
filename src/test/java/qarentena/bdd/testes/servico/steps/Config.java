@@ -15,7 +15,7 @@ public class Config {
     public static void setup() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         baseURI = "http://localhost:8080";
-        basePath = "/api";
+        basePath = "/api/v3";
 
         RestAssured.requestSpecification = new RequestSpecBuilder().
                 setContentType(ContentType.JSON).
