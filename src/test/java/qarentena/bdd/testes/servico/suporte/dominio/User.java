@@ -1,30 +1,26 @@
 package qarentena.bdd.testes.servico.suporte.dominio;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@AllArgsConstructor
-@Data
-@NoArgsConstructor
 @Builder
+@Getter
 public class User {
     @Builder.Default
-    int id = 10;
+    private int id = 10;
     @Builder.Default
-    String username = "rafalima";
+    private String username = "rafalima";
     @Builder.Default
-    String firstName = "Rafael";
+    private String firstName = "Rafael";
     @Builder.Default
-    String lastName = "Lima";
+    private String lastName = "Lima";
     @Builder.Default
-    String email= "rafael@email.com";
+    private String email= "rafael@email.com";
     @Builder.Default
-    String password = "12345";
+    private String password = "12345";
     @Builder.Default
-    String phone = "8199999999" ;
+    private String phone = "8199999999" ;
     @Builder.Default
-    int userStatus = 1;
+    private int userStatus = 1;
 
 }

@@ -1,5 +1,6 @@
 package qarentena.bdd.testes.servico.steps;
 
+import io.cucumber.docstring.DocString;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
