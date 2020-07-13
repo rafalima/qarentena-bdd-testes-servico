@@ -64,13 +64,13 @@ public class UserStepDefinitions {
 
     @E("o user criado foi cadastrado")
     public void oUsuarioCriadoFoiCadastrado() {
-        given().
+        User user = given().
             pathParam("nome", userEsperado.getUsername()).
         when().
             get(USER_ENDPOINT).
-        then().
-            statusCode(HttpStatus.SC_OK).
-            body("username", is(userEsperado.getUsername()));
+        thenReturn().as(User.class);
+
+        assertThat(userEsperado, is(user));
 
     }
 }

@@ -1,10 +1,15 @@
 package qarentena.bdd.testes.servico.suporte.dominio;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Builder.Default
     private int id = 10;
