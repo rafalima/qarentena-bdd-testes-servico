@@ -20,4 +20,4 @@ Funcionalidade: Gerenciamento de um user da PetSore
   Cenario: Cria um user menos verboso
     Quando crio um user
     Então recebo status code 200
-      E o usuario criado foi cadastrado
+      E o user criado foi cadastrado

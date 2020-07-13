@@ -17,9 +17,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UserStepDefinitions {
 
-    Map<String, String> userEsperadoMapa = new HashMap<>();
-    Response responseReal;
-    User userEsperado;
+    private Map<String, String> userEsperadoMapa = new HashMap<>();
+    private Response responseReal;
+    private User userEsperado;
+
+    private static final String CRIAR_USER_ENDPOINT = "/user";
+    private static final String USER_ENDPOINT = "/user/{nome}";
+
 
     @Quando("eu faço um POST para {} com o seguintes valores:")
     public void euFaçoUmPOSTParaUserComOSeguintesValores(String endpoint, Map<String, String> user) {
@@ -49,8 +53,7 @@ public class UserStepDefinitions {
         responseReal = given().
             body(userEsperado).
         when().
-            post("/user");
-
+            post(CRIAR_USER_ENDPOINT);
     }
 
     @Então("recebo status code {int}")
@@ -58,10 +61,12 @@ public class UserStepDefinitions {
         assertThat(responseReal.statusCode(), is(statusCode));
     }
 
-    @E("o usuario criado foi cadastrado")
+    @E("o user criado foi cadastrado")
     public void oUsuarioCriadoFoiCadastrado() {
+        given().
+            pathParam("nome", userEsperado.getUsername()).
         when().
-            get("/user/"+userEsperado.getUsername()).
+            get(USER_ENDPOINT).
         then().
             statusCode(HttpStatus.SC_OK).
             body("username", is(userEsperado.getUsername()));
