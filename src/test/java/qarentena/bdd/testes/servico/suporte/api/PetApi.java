@@ -10,8 +10,6 @@ import static io.restassured.RestAssured.given;
 public class PetApi {
 
     private static final String FIND_PETS_BY_STATUS_ENDPOINT = "/v3/pet/findByStatus?status={status}";
-//    private static final String FIND_PETS_BY_STATUS_ENDPOINT = "/v3/pet/findByStatus";
-//    param("status", status).
 
     public List<Pets> getByStatus(String status) {
         return given().

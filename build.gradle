@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id "io.freefair.lombok" version "5.1.0"
+    id "com.avast.gradle.docker-compose" version "0.13.0"
 }
 
 repositories {
@@ -36,3 +37,5 @@ task cucumber() {
         }
     }
 }
+
+dockerCompose.isRequiredBy(test)

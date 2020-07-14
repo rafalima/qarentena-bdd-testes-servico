@@ -4,9 +4,11 @@ import io.cucumber.docstring.DocString;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import qarentena.bdd.testes.servico.suporte.dominio.User;
+import qarentena.bdd.testes.servico.suporte.dominio.User2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +28,7 @@ public class UserStepDefinitions {
     private static final String USER_ENDPOINT = "/user/{nome}";
 
 
-    @Quando("eu faço um POST para {} com o seguintes valores:")
+    @Quando("eu faço um POST para {word} com o seguintes valores:")
     public void euFaçoUmPOSTParaUserComOSeguintesValores(String endpoint, Map<String, String> user) {
         userEsperadoMapa = user;
 
@@ -49,7 +51,7 @@ public class UserStepDefinitions {
 
     @Quando("crio um user")
     public void crioUmUser() {
-       userEsperado = User.builder().build();
+       userEsperado = User.builder().username("rafael").build();
 
         responseReal = given().
             body(userEsperado).

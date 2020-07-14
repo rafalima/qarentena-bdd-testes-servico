@@ -12,17 +12,23 @@ import static io.restassured.RestAssured.baseURI;
 public class Config {
 
     @Before
-    public static void setup() {
+    public void setup() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        baseURI = "http://localhost:8080";
+        baseURI = "http://localhost:12345";
         basePath = "/api/v3";
 
         RestAssured.requestSpecification = new RequestSpecBuilder().
+                addHeader("Authorization", getToken()).
                 setContentType(ContentType.JSON).
                 build();
+
 
         RestAssured.responseSpecification = new ResponseSpecBuilder().
                 expectContentType(ContentType.JSON).
                 build();
+    }
+
+    private String getToken() {
+        return "libera-ae";
     }
 }

@@ -3,23 +3,40 @@
 Funcionalidade: Gerenciamento de um pet da PetSore
 
   Alguma contexto de negócio
-    https://cucumber.io/docs/installation/java/
-    https://cucumber.io/docs/cucumber/api/#from-the-command-line
-    https://cucumber.io/docs/tools/java/#gradle
+
 
   Cenario: Lista somente pets disponíveis para a venda
-    Dado que eu possua pets available para a venda
+    Dado que eu possua pets available
     Quando eu pesquiso por todos os pets available
-    Então eu recebo a lista de pets disponíveis
+    Então eu recebo a lista com 7 pets
+    E possuo 3 animais com o nome Lion
 
   Cenario: Lista somente pets pending
-    Dado que eu possua pets pending para a venda
+    Dado que eu possua pets pending
     Quando eu pesquiso por todos os pets pending
     Então eu recebo a lista com 2 pets
 
-#    Adicionar esquema de cenário para o dois testes acima
-#    Um teste que tem um hashmap de <Status, Qnt>, assim não precisa colocar a quantidade no Então
-#   Create pets com tags como setup e testar as tags (mostrar isso)
-#  Delete Pet e mostrar que alguns testes vão falhar (mostrar uso de hooks com tags)
-#  Colocar API KEY
-#
+  Cenario: Lista somente pets sold
+    Dado que eu não possua pet sold
+    Quando eu pesquiso por todos os pets sold
+    Então eu recebo a lista com 0 pet
+
+  Esquema do Cenario: Pesquisa pelo status do pet
+    Quando eu pesquiso por pets <estado>
+    Então eu recebo status <httpStatus>
+
+    Exemplos: Pesquisa válida
+      | estado    | httpStatus |
+      | available | 200        |
+      | pending   | 200        |
+      | sold      | 200        |
+
+    Exemplos: Pesquisa inválida
+      | estado        | httpStatus |
+      | qualquercoisa | 400        |
+      | &*ˆˆ#         | 400        |
+
+
+#    criar ApiClients
+#   criar pedido (criar pet como parte do Given)
+#  criar before com estrategia de criar dados para pets e order
