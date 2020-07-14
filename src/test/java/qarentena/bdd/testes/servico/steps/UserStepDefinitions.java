@@ -75,4 +75,17 @@ public class UserStepDefinitions {
         assertThat(userEsperado, is(user));
 
     }
+
+    @Quando("eu faço um POST para {word} com o docstring:")
+    public void euFaçoUmPOSTParaUserComODocstring(String endpoint, DocString docString) {
+        userEsperadoMapa.put("username", "theUser");
+
+        given().
+            body(docString.getContent()).
+        when().
+            post(endpoint).
+        then().
+            statusCode(HttpStatus.SC_OK);
+
+    }
 }

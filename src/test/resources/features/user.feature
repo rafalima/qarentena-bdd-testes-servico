@@ -16,6 +16,22 @@ Funcionalidade: Gerenciamento de um user da PetSore
       | userStatus | 1                |
     Então quando faço um GET para /user/rafael então o usuário criado é retornado
 
+  Cenario: Cria um user na loja com docstring
+    Quando eu faço um POST para /user com o docstring:
+      """json
+      {
+        "id": 10,
+        "username": "theUser",
+        "firstName": "John",
+        "lastName": "James",
+        "email": "john@email.com",
+        "password": "12345",
+        "phone": "12345",
+        "userStatus": 1
+      }
+      """
+    Então quando faço um GET para /user/theUser então o usuário criado é retornado
+
 
   Cenario: Cria um user menos verboso
     Quando crio um user
