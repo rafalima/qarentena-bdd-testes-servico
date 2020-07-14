@@ -24,7 +24,8 @@ configurations {
 }
 
 task cucumber() {
-    dependsOn assemble, testClasses
+    dependsOn assemble, testClasses, composeUp
+    finalizedBy composeDown
     doLast {
         javaexec {
             main = "io.cucumber.core.cli.Main"
@@ -37,5 +38,3 @@ task cucumber() {
         }
     }
 }
-
-dockerCompose.isRequiredBy(test)

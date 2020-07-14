@@ -4,11 +4,9 @@ import io.cucumber.docstring.DocString;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import qarentena.bdd.testes.servico.suporte.dominio.User;
-import qarentena.bdd.testes.servico.suporte.dominio.User2;
 
 import java.util.HashMap;
 import java.util.Map;

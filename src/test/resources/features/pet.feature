@@ -9,7 +9,7 @@ Funcionalidade: Gerenciamento de um pet da PetSore
     Dado que eu possua pets available
     Quando eu pesquiso por todos os pets available
     Então eu recebo a lista com 7 pets
-    E possuo 3 animais com o nome Lion
+    E possuo 3 animais available com o nome Lion
 
   Cenario: Lista somente pets pending
     Dado que eu possua pets pending
@@ -37,6 +37,5 @@ Funcionalidade: Gerenciamento de um pet da PetSore
       | &*ˆˆ#         | 400        |
 
 
-#    criar ApiClients
 #   criar pedido (criar pet como parte do Given)
 #  criar before com estrategia de criar dados para pets e order
