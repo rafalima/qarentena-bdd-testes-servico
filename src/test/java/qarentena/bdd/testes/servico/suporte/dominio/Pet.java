@@ -1,18 +1,28 @@
 package qarentena.bdd.testes.servico.suporte.dominio;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Getter
-public class Pets {
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Pet {
+    private int id;
     private String name;
     private Category category;
+    private String status;
 
 
-    @Getter
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Category {
-
         private int id;
         private String name;
 
