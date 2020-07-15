@@ -4,7 +4,6 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import qarentena.bdd.testes.servico.suporte.dominio.Pet;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,9 +11,9 @@ import static io.restassured.RestAssured.given;
 
 public class PetApi {
 
-    private static final String FIND_PETS_BY_STATUS_ENDPOINT = "/pet/findByStatus?status={estado}";
-    private static final String PET_ENDPOINT = "/pet/{petId}";
-    private static final String CRIA_PET_ENDPOINT = "/pet";
+    private static final String FIND_PETS_BY_STATUS_ENDPOINT = "/v3/pet/findByStatus?status={estado}";
+    private static final String PET_ENDPOINT = "/v3/pet/{petId}";
+    private static final String CRIA_PET_ENDPOINT = "/v3/pet";
 
     public List<Pet> getByStatus(String status) {
         return given().

@@ -17,7 +17,7 @@ public class Config {
     public void setup() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         baseURI = "http://localhost:12345";
-        basePath = "/api/v3";
+        basePath = "/api";
 
         RestAssured.requestSpecification = new RequestSpecBuilder().
                 addHeader("Authorization", getToken()).

@@ -7,8 +7,8 @@ import static io.restassured.RestAssured.given;
 
 public class PedidoApi {
 
-    private static final String CRIA_PEDIDO_ENDPOINT = "/store/order";
-    private static final String PEDIDO_ENDPOINT = "/store/order/{orderId}";
+    private static final String CRIA_PEDIDO_ENDPOINT = "/v3/store/order";
+    private static final String PEDIDO_ENDPOINT = "/v3/store/order/{orderId}";
 
     public void criaPedido(Pedido pedido) {
         given().

@@ -22,8 +22,8 @@ public class UserStepDefinitions {
     private Response responseReal;
     private User userEsperado;
 
-    private static final String CRIAR_USER_ENDPOINT = "/user";
-    private static final String USER_ENDPOINT = "/user/{nome}";
+    private static final String CRIAR_USER_ENDPOINT = "/v3/user";
+    private static final String USER_ENDPOINT = "/v3/user/{nome}";
 
 
     @Quando("eu faço um POST para {word} com o seguintes valores:")
