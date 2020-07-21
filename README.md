@@ -34,6 +34,8 @@ Esse repositório se refere ao código criado durante a meetup do QArentena.
 * Rodar os testes (*necessário estar na raiz do projeto*)
      * Mac/Linux - `./gradlew tests`
      * Windows - `gradlew.bat tests`
+     
+* Relatório de execução - build/reports/feature.html
 
 ### Estrutura do Projeto
 
