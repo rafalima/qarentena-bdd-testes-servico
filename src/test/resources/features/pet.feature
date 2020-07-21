@@ -35,7 +35,3 @@ Funcionalidade: Gerenciamento de um pet da PetSore
       | estado        | httpStatus |
       | qualquercoisa | 400        |
       | &*ˆˆ#         | 400        |
-
-
-#   criar pedido (criar pet como parte do Given)
-#  criar before com estrategia de criar dados para pets e order
