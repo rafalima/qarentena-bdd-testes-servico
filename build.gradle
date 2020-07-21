@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'idea'
     id "io.freefair.lombok" version "5.1.0"
-    id "com.avast.gradle.docker-compose" version "0.13.0"
 }
 
 repositories {
@@ -15,27 +14,4 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-java:6.2.2'
     testImplementation 'io.cucumber:cucumber-junit:6.2.2'
     testImplementation 'io.rest-assured:rest-assured:4.3.1'
-    testImplementation 'io.rest-assured:json-schema-validator:4.3.1'
-}
-
-configurations {
-    cucumberRuntime {
-        extendsFrom testImplementation
-    }
-}
-
-task cucumber() {
-    dependsOn assemble, testClasses, composeUp
-    finalizedBy composeDown
-    doLast {
-        javaexec {
-            main = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = [
-                    '--plugin', 'pretty',
-                    '--plugin', 'html:build/reports/feature.html',
-                    '--glue', 'qarentena.bdd.testes.servico.steps', 'src/test/resources',
-                    '--tags', tags]
-        }
-    }
 }
