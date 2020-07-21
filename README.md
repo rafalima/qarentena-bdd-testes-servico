@@ -18,7 +18,7 @@ Esse repositório se refere ao código criado durante a meetup do QArentena.
 ### Requisitos
 
 * Java 8 ou superior
-* Ter o gradle instalado
+* Gradle
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 * IDE (recomendo usar o [IntelliJ Community](https://www.jetbrains.com/idea/download))
 * Lombok (siga [esse passo a passo](https://www.baeldung.com/lombok-ide) para poder usar no IntelliJ ou Eclipse)
