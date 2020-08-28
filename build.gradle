@@ -26,9 +26,10 @@ configurations {
 
 task testeApi(type: Test) {}
 
+
 task testeApiCucumber() {
     dependsOn assemble, testClasses
-    doLast {
+    doFirst {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
@@ -42,10 +43,27 @@ task testeApiCucumber() {
     }
 }
 
-task testeSanidade() {
+task testeSanidadeApi() {
     finalizedBy testeApiCucumber
 
-    tags = "@sanidade"
+    doLast {
+        tags = "@sanidade"
+    }
+
 }
 
-dockerCompose.isRequiredBy(testeApi)
+task testeRegressaoApi() {
+    finalizedBy testeApiCucumber
+
+    doLast {
+        tags += " and not @sanidade"
+    }
+
+}
+
+dockerCompose {
+    isRequiredBy(testeApi)
+    isRequiredBy(testeSanidadeApi)
+    isRequiredBy(testeRegressaoApi)
+    isRequiredBy(testeApiCucumber)
+}

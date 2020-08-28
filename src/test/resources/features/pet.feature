@@ -4,7 +4,7 @@ Funcionalidade: Gerenciamento de um pet da PetSore
 
   Alguma contexto de negócio
 
-
+  @wip
   Cenario: Lista somente pets disponíveis para a venda
     Dado que eu possua pets available
     Quando eu pesquiso por todos os pets available
