@@ -4,6 +4,7 @@ Funcionalidade: Gerenciamento de um user da PetSore
 
   Algum contexto de négocio
 
+  @sanidade
   Cenario: Cria um user na loja
     Quando eu faço um POST para /v3/user com o seguintes valores:
       | id         | 10               |
