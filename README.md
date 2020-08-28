@@ -32,8 +32,8 @@ Esse repositório se refere ao código criado durante a meetup do QArentena.
     * `gradle wrapper`
     
 * Rodar os testes (*necessário estar na raiz do projeto*)
-     * Mac/Linux - `./gradlew tests`
-     * Windows - `gradlew.bat tests`
+     * Mac/Linux - `./gradlew testeApi`
+     * Windows - `gradlew.bat testeApi`
      
 * Relatório de execução - build/reports/feature.html
 

@@ -15,3 +15,5 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-junit:6.2.2'
     testImplementation 'io.rest-assured:rest-assured:4.3.1'
 }
+
+task testeApi(type: Test) {}
