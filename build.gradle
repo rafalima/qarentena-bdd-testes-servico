@@ -36,10 +36,16 @@ task testeApiCucumber() {
                     '--plugin', 'html:build/reports/feature.html',
                     '--plugin', 'json:build/reports/feature.json',
                     '--glue', 'qarentena.bdd.testes.servico', 'src/test/resources/features',
-                    '--tags', 'not @wip and not @quarentena'
+                    '--tags', tags
             ]
         }
     }
+}
+
+task testeSanidade() {
+    finalizedBy testeApiCucumber
+
+    tags = "@sanidade"
 }
 
 dockerCompose.isRequiredBy(testeApi)
