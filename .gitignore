@@ -31,3 +31,5 @@ build
 target/
 
 .idea
+
+*.iws
