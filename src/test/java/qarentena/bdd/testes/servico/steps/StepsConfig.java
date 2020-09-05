@@ -6,10 +6,9 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
-import org.aeonbits.owner.ConfigFactory;
-import qarentena.bdd.testes.servico.suporte.config.ServerConfig;
 import qarentena.bdd.testes.servico.suporte.api.PetApi;
 import qarentena.bdd.testes.servico.suporte.config.ConfigManager;
+import qarentena.bdd.testes.servico.suporte.config.ServerConfig;
 
 import static io.restassured.RestAssured.basePath;
 import static io.restassured.RestAssured.baseURI;
