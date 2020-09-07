@@ -23,6 +23,8 @@ jobs:
 
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/repo
 
       # Download and cache dependencies
       - restore_cache:
@@ -39,4 +41,26 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: gradle testeApiCucumber
+      - run: gradle test
+  tests:
+    docker:
+      - image: circleci/openjdk:8-jdk
+      - image: swaggerapi/petstore3:unstable
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Cucumber Tests
+          command: gradle test
+
+
+workflows:
+  version: 2
+
+  qarentena-bdd:
+    jobs:
+      - build
+      - tests:
+          requires:
+            - build
