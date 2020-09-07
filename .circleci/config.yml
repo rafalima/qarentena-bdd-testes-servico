@@ -40,6 +40,9 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
+      - persist_to_workspace:
+          root: .
+
   tests:
     docker:
       - image: circleci/openjdk:8-jdk
