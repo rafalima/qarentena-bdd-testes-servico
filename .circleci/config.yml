@@ -37,11 +37,13 @@ jobs:
 
       - save_cache:
           paths:
-            - ~/.gradle
+            - ~/repo/gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       - persist_to_workspace:
           root: .
+          paths:
+            - gradle
 
   tests:
     docker:
