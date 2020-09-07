@@ -44,6 +44,8 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
       - image: swaggerapi/petstore3:unstable
+        environment:
+          ENV: circle
     steps:
       - checkout
       - attach_workspace:
