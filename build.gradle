@@ -25,6 +25,9 @@ configurations {
     }
 }
 
+task testeApi(type: Test) {}
+
+
 task testeApiCucumber() {
     dependsOn assemble, testClasses
     doFirst {
@@ -35,19 +38,38 @@ task testeApiCucumber() {
                     '--plugin', 'html:build/reports/feature.html',
                     '--plugin', 'json:build/reports/feature.json',
                     '--glue', 'qarentena.bdd.testes.servico', 'src/test/resources/features',
+                    '--tags', tags
             ]
         }
     }
 }
 
+task testeSanidadeApi() {
+    finalizedBy testeApiCucumber
 
-task testeSanidadeApi(type: Test) {
-    environment "CUCUMBER_FILTER_TAGS", "@sanidade"
+    doLast {
+        tags = "@sanidade"
+    }
+
 }
 
-task testeRegressaoApi(type: Test) {
-    systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
+task testeRegressaoApi() {
+    finalizedBy testeApiCucumber
+
+    doLast {
+        tags += " and not @sanidade"
+    }
+
 }
+
+
+//task testeSanidadeApi(type: Test) {
+//    environment "CUCUMBER_FILTER_TAGS", "@sanidade"
+//}
+//
+//task testeRegressaoApi(type: Test) {
+//    systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
+//}
 
 dockerCompose {
     isRequiredBy(test)
