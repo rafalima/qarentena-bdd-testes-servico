@@ -38,10 +38,14 @@ task testeApiCucumber() {
                     '--plugin', 'html:reports/feature.html',
                     '--plugin', 'junit:reports/feature.xml',
                     '--glue', 'qarentena.bdd.testes.servico', 'src/test/resources/features',
-                    '--tags', tags
+                    '--tags', 'not @wip and not @quarentena'
             ]
         }
     }
+}
+
+test {
+    systemProperty 'cucumber.plugin', "pretty, html:${LOCAL_REPORT_FOLDER}"
 }
 
 
@@ -66,13 +70,14 @@ task testeApiCucumber() {
 
 task testeSanidadeApi(type: Test) {
     environment "CUCUMBER_FILTER_TAGS", "@sanidade"
+    environment "CUCUMBER_PLUGIN", "pretty, html:${CI_REPORT_FOLDER}"
 }
 
 task testeRegressaoApi(type: Test) {
     systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
-    systemProperty 'cucumber.plugin', "pretty, html:reports/feature.html"
+    systemProperty 'cucumber.plugin', "pretty, html:${CI_REPORT_FOLDER}"
 }
 
 dockerCompose {
-    isRequiredBy(test)
+//    isRequiredBy(test)
 }
