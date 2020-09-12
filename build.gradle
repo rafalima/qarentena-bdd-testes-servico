@@ -48,7 +48,6 @@ task testeSanidadeApi(type: Test) {
 
 task testeRegressaoApi(type: Test) {
     systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
-    systemProperty 'cucumber.plugin', "pretty, html:~/cucumber/feature.html"
 }
 
 dockerCompose {
