@@ -72,7 +72,7 @@ task testeRegressaoApi() {
 //}
 
 dockerCompose {
-    isRequiredBy(test)
+//    isRequiredBy(test)
     isRequiredBy(testeSanidadeApi)
 //    isRequiredBy(testeRegressaoApi)
 }
