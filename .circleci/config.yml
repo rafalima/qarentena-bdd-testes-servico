@@ -56,8 +56,7 @@ jobs:
       - run:
           name: Cucumber Tests
           command: |
-            mkdir -p ~/cucumber
-            gradle testeApiCucumber
+            gradle testeRegressaoApi
           when: always
       - store_test_results:
           path: ~/repo/build/reports
