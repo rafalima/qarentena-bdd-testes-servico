@@ -36,6 +36,7 @@ task testeApiCucumber() {
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty',
                     '--plugin', 'html:reports/feature.html',
+                    '--plugin', 'junit:reports/feature.xml',
                     '--glue', 'qarentena.bdd.testes.servico', 'src/test/resources/features',
                     '--tags', tags
             ]
