@@ -32,14 +32,11 @@ jobs:
             - v1-dependencies-{{ checksum "build.gradle" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run: gradle dependencies
-
       - save_cache:
           paths:
             - ~/repo/gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
-
       - persist_to_workspace:
           root: .
           paths:
@@ -58,7 +55,14 @@ jobs:
           at: ~/repo
       - run:
           name: Cucumber Tests
-          command: gradle test
+          command: |
+            mkdir -p ~/cucumber
+            gradle testeRegressaoApi
+          when: always
+      - store_test_results:
+          path: ~/cucumber
+      - store_artifacts:
+          path: ~/cucumber
 
 
 workflows:
