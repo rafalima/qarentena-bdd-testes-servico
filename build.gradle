@@ -45,35 +45,34 @@ task testeApiCucumber() {
 }
 
 
-task testeSanidadeApi() {
-    finalizedBy testeApiCucumber
-
-    doLast {
-        tags = "@sanidade"
-    }
-
-}
-
-task testeRegressaoApi() {
-    finalizedBy testeApiCucumber
-
-    doLast {
-        tags += " and not @sanidade"
-    }
-
-}
-
-
-//task testeSanidadeApi(type: Test) {
-//    environment "CUCUMBER_FILTER_TAGS", "@sanidade"
+//task testeSanidadeApi() {
+//    finalizedBy testeApiCucumber
+//
+//    doLast {
+//        tags = "@sanidade"
+//    }
+//
 //}
 //
-//task testeRegressaoApi(type: Test) {
-//    systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
+//task testeRegressaoApi() {
+//    finalizedBy testeApiCucumber
+//
+//    doLast {
+//        tags += " and not @sanidade"
+//    }
+//
 //}
 
+
+task testeSanidadeApi(type: Test) {
+    environment "CUCUMBER_FILTER_TAGS", "@sanidade"
+}
+
+task testeRegressaoApi(type: Test) {
+    systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
+    systemProperty 'cucumber.plugin', "pretty, html:reports/feature.html"
+}
+
 dockerCompose {
-//    isRequiredBy(test)
-    isRequiredBy(testeSanidadeApi)
-//    isRequiredBy(testeRegressaoApi)
+    isRequiredBy(test)
 }
