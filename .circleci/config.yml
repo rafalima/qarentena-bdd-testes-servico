@@ -58,13 +58,10 @@ jobs:
           command: |
             gradle testeApiCucumber
           when: always
-      - run:
-          name: jUnit Cucumber Tests
-          command: gradle test
       - store_test_results:
-          path: ~/repo/build/reports
+          path: reports
       - store_artifacts:
-          path: ~/repo/build/reports
+          path: reports
 
 
 workflows:
