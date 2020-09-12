@@ -48,34 +48,14 @@ test {
     systemProperty 'cucumber.plugin', "pretty, html:${LOCAL_REPORT_FOLDER}"
 }
 
-
-//task testeSanidadeApi() {
-//    finalizedBy testeApiCucumber
-//
-//    doLast {
-//        tags = "@sanidade"
-//    }
-//
-//}
-//
-//task testeRegressaoApi() {
-//    finalizedBy testeApiCucumber
-//
-//    doLast {
-//        tags += " and not @sanidade"
-//    }
-//
-//}
-
-
 task testeSanidadeApi(type: Test) {
     environment "CUCUMBER_FILTER_TAGS", "@sanidade"
-    environment "CUCUMBER_PLUGIN", "pretty, html:reports/feature.html"
+    environment "CUCUMBER_PLUGIN", "pretty, html:${CI_REPORT_FOLDER}, junit:${CI_REPORT_FOLDER}"
 }
 
 task testeRegressaoApi(type: Test) {
     systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
-    systemProperty 'cucumber.plugin', "pretty, html:reports/feature.html, junit:reports/feature.xml"
+    systemProperty 'cucumber.plugin', "pretty, html:${CI_REPORT_FOLDER}, junit:${CI_REPORT_FOLDER}"
 }
 
 dockerCompose {
