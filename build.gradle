@@ -43,6 +43,9 @@ task testeApiCucumber() {
         }
     }
 }
+String getCiReportFolder() {
+    return System.getenv('CI_REPORT_FOLDER')
+}
 
 test {
     systemProperty 'cucumber.plugin', "pretty, html:${LOCAL_REPORT_FOLDER}"
@@ -50,7 +53,8 @@ test {
 
 task testeSanidadeApi(type: Test) {
     environment "CUCUMBER_FILTER_TAGS", "@sanidade"
-    environment "CUCUMBER_PLUGIN", "pretty, html:${CI_REPORT_FOLDER}, junit:${CI_REPORT_FOLDER}"
+    environment "CUCUMBER_PLUGIN", "pretty, html:${getCiReportFolder()}/feature.html, " +
+                "junit:${getCiReportFolder()}/feature.xml}"
 }
 
 task testeRegressaoApi(type: Test) {
