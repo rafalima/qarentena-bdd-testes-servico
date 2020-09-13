@@ -29,7 +29,7 @@ Funcionalidade: Gerenciamento de um pet da PetSore
       | estado    | httpStatus |
       | available | 200        |
       | pending   | 200        |
-      | sold      | 201        |
+      | sold      | 200        |
 
     Exemplos: Pesquisa inválida
       | estado        | httpStatus |
