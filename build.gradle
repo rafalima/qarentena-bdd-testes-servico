@@ -54,12 +54,13 @@ test {
 task testeSanidadeApi(type: Test) {
     environment "CUCUMBER_FILTER_TAGS", "@sanidade"
     environment "CUCUMBER_PLUGIN", "pretty, html:${getCiReportFolder()}/feature.html, " +
-                "junit:${getCiReportFolder()}/feature.xml}"
+                                   "junit:${getCiReportFolder()}/feature.xml}"
 }
 
 task testeRegressaoApi(type: Test) {
-    systemProperty 'cucumber.filter.tags', "not @wip and not @quarentena and not @sanidade"
-    systemProperty 'cucumber.plugin', "pretty, html:${CI_REPORT_FOLDER}, junit:${CI_REPORT_FOLDER}"
+    systemProperty "cucumber.filter.tags", "not @wip and not @quarentena and not @sanidade"
+    systemProperty "cucumber.plugin", "pretty, html:${getCiReportFolder()}/feature.html, " +
+                                      "junit:${getCiReportFolder()}/feature.xml}"
 }
 
 dockerCompose {
