@@ -54,7 +54,7 @@ test {
 task testeSanidadeApi(type: Test) {
     environment "CUCUMBER_FILTER_TAGS", "@sanidade"
     environment "CUCUMBER_PLUGIN", "pretty, html:${getCiReportFolder()}/feature.html, " +
-                                   "junit:${getCiReportFolder()}/feature.xml}"
+                                   "junit:${getCiReportFolder()}/feature.xml"
 }
 
 task testeRegressaoApi(type: Test) {
