@@ -54,6 +54,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/repo
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
       - run:
           name: Sanity Cucumber Tests
           command: |
@@ -76,6 +79,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/repo
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
       - run:
           name: Regression Cucumber Tests
           command: |
