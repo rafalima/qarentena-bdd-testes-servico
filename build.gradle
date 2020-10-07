@@ -26,7 +26,7 @@ task testeApi(type: Test) {
     systemProperty "cucumber.plugin", "pretty, html:${LOCAL_REPORT}"
 }
 
-task testeSanidade(type: Test) {
+task testeSanidadeApi(type: Test) {
     environment "CUCUMBER_FILTER_TAGS", "@sanidade"
     environment "CUCUMBER_PLUGIN", "pretty, html:reports/feature.html, junit:reports/feature.xml"
 }
