@@ -27,7 +27,7 @@ Funcionalidade: Gerenciamento de um pet da PetSore
 
     Exemplos: Pesquisa válida
       | estado    | httpStatus |
-      | available | 400        |
+      | available | 200        |
       | pending   | 200        |
       | sold      | 200        |
 
