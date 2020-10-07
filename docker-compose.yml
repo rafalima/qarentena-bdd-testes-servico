@@ -1,8 +1,0 @@
-version: '3'
-
-services:
-  swagger-petstore:
-    image: swaggerapi/petstore3:unstable
-    container_name: petstore
-    ports:
-      - 12345:8080
