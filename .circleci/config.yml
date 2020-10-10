@@ -48,6 +48,7 @@ jobs:
       - image: swaggerapi/petstore3:unstable
     environment:
       ENV: circle
+      CI_REPORT_FOLDER: reports
     working_directory: ~/repo
     steps:
       - checkout
@@ -72,6 +73,7 @@ jobs:
       - image: swaggerapi/petstore3:unstable
     environment:
       ENV: circle
+      CI_REPORT_FOLDER: reports
     working_directory: ~/repo
     steps:
       - checkout
@@ -102,4 +104,4 @@ workflows:
             - build
       - regressionTests:
           requires:
-            - build
+            - sanityTests

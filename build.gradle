@@ -18,6 +18,10 @@ dependencies {
     testImplementation 'org.aeonbits.owner:owner:1.0.12'
 }
 
+String getCiReportFolder() {
+    return System.getenv('CI_REPORT_FOLDER')
+}
+
 test {
     systemProperty "cucumber.plugin", "pretty, html:${LOCAL_REPORT}"
 }
@@ -26,12 +30,14 @@ task testeApi(type: Test) {}
 
 task testeSanidadeApi(type: Test) {
     environment "CUCUMBER_FILTER_TAGS", "@sanidade"
-    environment "CUCUMBER_PLUGIN", "pretty, html:reports/feature.html, junit:reports/feature.xml"
+    environment "CUCUMBER_PLUGIN", "pretty, html:${getCiReportFolder()}/feature.html, " +
+                                   "junit:${getCiReportFolder()}/feature.xml"
 }
 
 task testeRegressaoApi(type: Test) {
     systemProperty "cucumber.filter.tags", "not @wip and not @quarentena and not @sanidade"
-    systemProperty "cucumber.plugin", "pretty, html:reports/feature.html, junit:reports/feature.xml"
+    systemProperty "cucumber.plugin", "pretty, html:${getCiReportFolder()}/feature.html, " +
+                                      "junit:${getCiReportFolder()}/feature.xml"
 }
 
 dockerCompose.isRequiredBy(testeApi)
