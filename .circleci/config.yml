@@ -66,6 +66,30 @@ jobs:
       - store_artifacts:
           path: reports
 
+  regressionTests:
+    docker:
+      - image: circleci/openjdk:8-jdk
+      - image: swaggerapi/petstore3:unstable
+    environment:
+      ENV: circle
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+      - run:
+          name: Regression Cucumber Tests
+          command: |
+            gradle testeRegressaoApi
+          when: always
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: reports
+
 
 workflows:
   version: 2
@@ -74,5 +98,8 @@ workflows:
     jobs:
       - build
       - sanityTests:
+          requires:
+            - build
+      - regressionTests:
           requires:
             - build
