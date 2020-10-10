@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id "io.freefair.lombok" version "5.1.0"
+    id 'com.avast.gradle.docker-compose' version "0.13.2"
 }
 
 repositories {
@@ -16,4 +17,20 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:4.3.1'
 }
 
+test {
+    systemProperty "cucumber.plugin", "pretty, html:${LOCAL_REPORT}"
+}
+
 task testeApi(type: Test) {}
+
+task testeSanidadeApi(type: Test) {
+    environment "CUCUMBER_FILTER_TAGS", "@sanidade"
+    environment "CUCUMBER_PLUGIN", "pretty, html:reports/feature.html, junit:reports/feature.xml"
+}
+
+task testeRegressaoApi(type: Test) {
+    systemProperty "cucumber.filter.tags", "not @wip and not @quarentena and not @sanidade"
+    systemProperty "cucumber.plugin", "pretty, html:reports/feature.html, junit:reports/feature.xml"
+}
+
+dockerCompose.isRequiredBy(testeApi)
