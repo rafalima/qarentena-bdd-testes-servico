@@ -65,3 +65,12 @@ jobs:
           path: reports
 
 
+workflows:
+  version: 2
+
+  qarentena-bdd:
+    jobs:
+      - build
+      - sanityTests:
+          requires:
+            - build
